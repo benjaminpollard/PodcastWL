@@ -15,6 +15,18 @@ namespace WhiteLabelPodcastApp.Controllers
         public DashboardController(DatabaseRepo database)
         {
             this.database = database;
+            var l = new List<PodcastModel>();
+            var bb = new PodcastModel();
+            bb.isFav = true;
+            bb.name = "test 1";
+            l.Add(bb);
+
+            var bb2 = new PodcastModel();
+            bb2.isFav = false;
+            bb2.name = "test 2";
+
+            l.Add(bb2);
+            this.database.SaveItems(l);
         }
 
         public List<PodcastModel> GetPodcasts()

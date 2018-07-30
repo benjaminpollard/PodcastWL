@@ -2107,11 +2107,11 @@ namespace WhiteLabelPodcastApp.Droid
 			// aapt resource value: 0x7f060041
 			public const int list_item = 2131099713;
 			
-			// aapt resource value: 0x7f060075
-			public const int list_item_dash_pod_fav = 2131099765;
-			
 			// aapt resource value: 0x7f060076
-			public const int list_item_dash_pod_icon = 2131099766;
+			public const int list_item_dash_pod_fav = 2131099766;
+			
+			// aapt resource value: 0x7f060075
+			public const int list_item_dash_pod_icon = 2131099765;
 			
 			// aapt resource value: 0x7f060077
 			public const int list_item_dashboard_title = 2131099767;

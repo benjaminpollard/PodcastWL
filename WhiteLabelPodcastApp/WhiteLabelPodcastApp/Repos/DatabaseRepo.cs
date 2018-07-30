@@ -15,7 +15,16 @@ namespace WhiteLabelPodcastApp.Repos
             database = Realm.GetInstance();
         }
 
-
+        public void SaveItems<T>(List<T> items) where T : RealmObject
+        {
+            database.Write(() =>
+            {
+                foreach(var item in items)
+                {
+                    database.Add(item);
+                }
+            });
+        }
         public void SaveItem<T>(T item) where T: RealmObject
         {
             database.Write(() =>

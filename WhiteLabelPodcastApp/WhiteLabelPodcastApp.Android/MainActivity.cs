@@ -1,8 +1,5 @@
-﻿using System;
-
+﻿
 using Android.App;
-using Android.Content;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
@@ -49,10 +46,16 @@ namespace WhiteLabelPodcastApp.Droid
             };
 
             //SupportFragmentManager.PutFragment
-
+            setFragment(new Dashboard.DashboardFragment());
 
         }
 
+        void setFragment(  Android.Support.V4.App.Fragment frag)
+        {
+            Android.Support.V4.App.FragmentTransaction fragmentTx = this.SupportFragmentManager.BeginTransaction();
+            fragmentTx.Replace(Resource.Id.frag_holder, frag);
+            fragmentTx.Commit();
+        }
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
             switch (item.ItemId)
