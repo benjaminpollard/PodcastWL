@@ -1,5 +1,5 @@
 ﻿<resources>
-  <style name="MyCustomTheme" parent="Theme.AppCompat">
+  <style name="MyCustomTheme" parent="Theme.AppCompat.Light.NoActionBar">
     <!-- Your customizations go here -->
   </style>
 </resources>

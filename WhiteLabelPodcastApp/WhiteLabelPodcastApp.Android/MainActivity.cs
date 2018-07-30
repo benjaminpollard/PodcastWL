@@ -9,6 +9,8 @@ using Android.OS;
 using Android.Support.Design.Widget;
 using Android.Support.V4.Widget;
 using Android.Support.V7.App;
+using Android.Graphics.Drawables;
+using Android.Graphics;
 
 namespace WhiteLabelPodcastApp.Droid
 {
@@ -18,7 +20,7 @@ namespace WhiteLabelPodcastApp.Droid
         DrawerLayout drawerLayout;
         NavigationView navigationView;
         FrameLayout fragmentHolder;
-        TextView title;
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -27,21 +29,28 @@ namespace WhiteLabelPodcastApp.Droid
             SetContentView(Resource.Layout.Main);
             var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
+            Android.Support.V7.App.ActionBar actionbar = SupportActionBar;
+            actionbar.SetDisplayHomeAsUpEnabled(true);
 
-            //Enable support action bar to display hamburger
-            //SupportActionBar.SetHomeAsUpIndicator(Resource.Drawable.ic_menu);
-            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+            Drawable drawable = Resources.GetDrawable(Resource.Drawable.hamburger_icon);
+            Bitmap bitmap = ((BitmapDrawable)drawable).Bitmap;
+            Drawable newdrawable = new BitmapDrawable(Resources, Bitmap.CreateScaledBitmap(bitmap, 60, 60, true));
+            actionbar.SetHomeAsUpIndicator(newdrawable);
+            actionbar.Title = "Dashboard";
 
             drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
             navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
             fragmentHolder = FindViewById<FrameLayout>(Resource.Id.frag_holder);
-            title = FindViewById<TextView>(Resource.Id.toolbar_title);
 
             navigationView.NavigationItemSelected += (sender, e) => {
                 e.MenuItem.SetChecked(true);
                 //react to click here and swap fragments or navigate
                 drawerLayout.CloseDrawers();
             };
+
+            //SupportFragmentManager.PutFragment
+
+
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
