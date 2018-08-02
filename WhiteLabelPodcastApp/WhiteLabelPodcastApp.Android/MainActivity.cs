@@ -45,7 +45,6 @@ namespace WhiteLabelPodcastApp.Droid
                 drawerLayout.CloseDrawers();
             };
 
-            //SupportFragmentManager.PutFragment
             setFragment(new Dashboard.DashboardFragment());
 
         }

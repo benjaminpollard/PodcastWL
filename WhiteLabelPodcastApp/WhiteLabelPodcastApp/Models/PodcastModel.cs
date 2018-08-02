@@ -10,5 +10,6 @@ namespace WhiteLabelPodcastApp.Droid.Dashboard
         public String name { get; set; }
         public Boolean isFav { get; set; }
         public String imageUrl { get; set; }
+        public string URL { set; get; }
     }
 }

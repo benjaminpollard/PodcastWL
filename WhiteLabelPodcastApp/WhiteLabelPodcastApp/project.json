@@ -1,0 +1,12 @@
+﻿{
+  "dependencies": {
+    "Fody": "3.1.4",
+    "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
+    "NETStandard.Library": "1.6.0",
+    "Realm": "3.1.0",
+    "Refit": "4.6.30"
+  },
+  "frameworks": {
+    "netstandard1.5": {}
+  }
+}

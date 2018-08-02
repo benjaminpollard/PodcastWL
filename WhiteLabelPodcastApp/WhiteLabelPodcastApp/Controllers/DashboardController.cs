@@ -11,27 +11,33 @@ namespace WhiteLabelPodcastApp.Controllers
     public class DashboardController
     {
         DatabaseRepo database;
+        DashboardRepo dashboardRepo;
 
-        public DashboardController(DatabaseRepo database)
+        public DashboardController(DatabaseRepo database, DashboardRepo dashboardRepo)
         {
             this.database = database;
-            var l = new List<PodcastModel>();
-            var bb = new PodcastModel();
-            bb.isFav = true;
-            bb.name = "test 1";
-            l.Add(bb);
+            this.dashboardRepo = dashboardRepo;
 
-            var bb2 = new PodcastModel();
-            bb2.isFav = false;
-            bb2.name = "test 2";
-
-            l.Add(bb2);
-            this.database.SaveItems(l);
         }
 
-        public List<PodcastModel> GetPodcasts()
+        public List<PodcastModel> GetPodcastsFromDatabase()
+        {
+            //if(database.GetList<PodcastModel>().Count == 0)
+            //{
+            //    database.SaveItem(dashboardRepo.PodcastDefaults());
+            //    return dashboardRepo.PodcastDefaults();
+            //}
+            return dashboardRepo.PodcastDefaults();
+        }
+
+        public List<PodcastModel> GetPodcastsNetwork()
         {
             return database.GetList<PodcastModel>();
+        }
+
+        public Task<List<Models.RSSFeedItem>> GetFeed(PodcastModel podcastModel)
+        {
+            return dashboardRepo.GetFeed(podcastModel.URL);
         }
     }
 }
